@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movies I've Watched | Personal Website</title>
+  <title>Movies I've Watched | Wimpy Kid</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
@@ -30,22 +30,66 @@
       color: white;
     }
     
-    .movie-poster {
-      height: 350px;
-      overflow: hidden;
-      border-radius: 8px;
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
     }
     
-    .placeholder-poster {
+    .movie-card {
+      display: flex;
+      flex-direction: row;
+      transition: transform 0.3s ease;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .movie-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .movie-poster {
+      flex: 0 0 200px;
+      height: 300px;
+      overflow: hidden;
+    }
+    
+    .movie-poster img {
       width: 100%;
       height: 100%;
-      background-color: var(--primary-light);
+      object-fit: cover;
+    }
+    
+    .movie-content {
+      flex: 1;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
+    }
+    
+    .movie-content h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .movie-year {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+    
+    .movie-director {
+      color: var(--text-light);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
     }
     
     .movie-rating {
@@ -61,44 +105,22 @@
       color: #ffc107;
     }
     
-    .movie-director {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-      display: block;
+    @media (max-width: 992px) {
+      .movie-grid {
+        grid-template-columns: 1fr;
+      }
     }
     
-    .movie-year {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      background-color: var(--background-alt);
-      border-radius: 4px;
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .movie-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    
-    .movie-card {
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-    }
-    
-    .movie-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .movie-content {
-      padding: 1rem 0;
-    }
-    
-    .movie-content h3 {
-      margin-top: 0;
+    @media (max-width: 768px) {
+      .movie-card {
+        flex-direction: column;
+      }
+      
+      .movie-poster {
+        flex: 0 0 auto;
+        height: 350px;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -106,7 +128,7 @@
   <header class="site-header">
     <div class="container">
       <div class="site-logo">
-        <a href="index.html">Your Name</a>
+        <a href="index.html">Wimpy Kid</a>
       </div>
       <nav class="site-nav">
         <ul>
@@ -144,26 +166,23 @@
       
       <div class="movie-filters">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="action">Action</button>
         <button class="filter-btn" data-filter="drama">Drama</button>
-        <button class="filter-btn" data-filter="sci-fi">Sci-Fi</button>
+        <button class="filter-btn" data-filter="horror">Horror</button>
         <button class="filter-btn" data-filter="comedy">Comedy</button>
-        <button class="filter-btn" data-filter="documentary">Documentary</button>
+        <button class="filter-btn" data-filter="mystery">Mystery</button>
+        <button class="filter-btn" data-filter="romedy">Romedy</button>
       </div>
       
       <div class="movie-grid">
         <!-- Movie 1 -->
-        <div class="movie-card" data-category="sci-fi">
+        <div class="movie-card" data-category="drama">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>Inception</h3>
-              <p>Christopher Nolan</p>
-            </div>
+            <img src="assets/images/movies/fallen-angels.png" alt="Fallen Angels movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">2010</span>
-            <h3>Inception</h3>
-            <p class="movie-director">Directed by Christopher Nolan</p>
+            <span class="movie-year">1995</span>
+            <h3>Fallen Angels</h3>
+            <p class="movie-director">Directed by Wong Kar-wai</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
@@ -171,71 +190,58 @@
               <span class="star filled">★</span>
               <span class="star filled">★</span>
             </div>
-            <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
+            <p>The Aamir khan cameo was everything</p>
           </div>
         </div>
         
         <!-- Movie 2 -->
-        <div class="movie-card" data-category="drama">
+        <div class="movie-card" data-category="horror">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>The Shawshank Redemption</h3>
-              <p>Frank Darabont</p>
-            </div>
+            <img src="assets/images/movies/ma.png" alt="Ma movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">1994</span>
-            <h3>The Shawshank Redemption</h3>
-            <p class="movie-director">Directed by Frank Darabont</p>
+            <span class="movie-year">2019</span>
+            <h3>Ma</h3>
+            <p class="movie-director">Directed by Jason Blum</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
               <span class="star filled">★</span>
-              <span class="star filled">★</span>
-              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
             </div>
-            <p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
+            <p>Watched this because of a party 4 u edit about Ma and Farkel</p>
           </div>
         </div>
         
         <!-- Movie 3 -->
-        <div class="movie-card" data-category="action">
+        <div class="movie-card" data-category="comedy">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>The Dark Knight</h3>
-              <p>Christopher Nolan</p>
-            </div>
+            <img src="assets/images/movies/bhagam_bhaag.png" alt="Bhagam Bhag movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">2008</span>
-            <h3>The Dark Knight</h3>
-            <p class="movie-director">Directed by Christopher Nolan</p>
+            <span class="movie-year">2019</span>
+            <h3>Bhagam Bhag</h3>
+            <p class="movie-director">Directed by Amit Sharma</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
               <span class="star filled">★</span>
-              <span class="star filled">★</span>
-              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
             </div>
-            <p>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
           </div>
         </div>
         
         <!-- Movie 4 -->
-        <div class="movie-card" data-category="comedy">
+        <div class="movie-card" data-category="mystery">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>The Grand Budapest Hotel</h3>
-              <p>Wes Anderson</p>
-            </div>
+            <img src="assets/images/movies/talaash.png" alt="Talaash movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">2014</span>
-            <h3>The Grand Budapest Hotel</h3>
-            <p class="movie-director">Directed by Wes Anderson</p>
+            <span class="movie-year">2012</span>
+            <h3>Talaash</h3>
+            <p class="movie-director">Directed by Reema Kagti</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
@@ -243,47 +249,100 @@
               <span class="star filled">★</span>
               <span class="star">☆</span>
             </div>
-            <p>A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
+            <p>This one is for the Wong Kar-Wai and David Lynch stans. I also don't understand people who say that this is just a rip off of Sixth Sense, I mean sure it's inspired, but it breathes the SW industry in India into life and tries to tell a story around it that humanizes them</p>
           </div>
         </div>
         
         <!-- Movie 5 -->
-        <div class="movie-card" data-category="documentary">
+        <div class="movie-card" data-category="drama">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>Free Solo</h3>
-              <p>Jimmy Chin, Elizabeth Chai Vasarhelyi</p>
-            </div>
+            <img src="assets/images/movies/babygirl.png" alt="Babygirl movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">2018</span>
-            <h3>Free Solo</h3>
-            <p class="movie-director">Directed by Jimmy Chin, Elizabeth Chai Vasarhelyi</p>
+            <span class="movie-year">2024</span>
+            <h3>Babygirl</h3>
+            <p class="movie-director">Directed by Halina Reijn</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
               <span class="star filled">★</span>
-              <span class="star filled">★</span>
-              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
             </div>
-            <p>Alex Honnold attempts to become the first person to ever free solo climb El Capitan.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
+            <p>Would kill to see the LinkedIn summary of his internship in the STAR template</p>
           </div>
         </div>
         
         <!-- Movie 6 -->
-        <div class="movie-card" data-category="sci-fi">
+        <div class="movie-card" data-category="romedy">
           <div class="movie-poster">
-            <div class="placeholder-poster">
-              <h3>Interstellar</h3>
-              <p>Christopher Nolan</p>
-            </div>
+            <img src="assets/images/movies/humtum.png" alt="Hum Tum movie poster">
           </div>
           <div class="movie-content">
-            <span class="movie-year">2014</span>
-            <h3>Interstellar</h3>
-            <p class="movie-director">Directed by Christopher Nolan</p>
+            <span class="movie-year">2005</span>
+            <h3>Hum Tum</h3>
+            <p class="movie-director">Directed by Kunal Kohli</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+            <p>A classic Bollywood romantic comedy with charming characters and memorable moments</p>
+          </div>
+        </div>
+
+        <!-- Movie 7 -->
+        <div class="movie-card" data-category="drama">
+          <div class="movie-poster">
+            <img src="assets/images/movies/antareen.png" alt="Antareen movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">1993</span>
+            <h3>Antareen</h3>
+            <p class="movie-director">Directed by Mrinal Sen</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Movie 8 -->
+        <div class="movie-card" data-category="drama">
+          <div class="movie-poster">
+            <img src="assets/images/movies/bengali_night.png" alt="Bengali Night movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">1988</span>
+            <h3>The Bengali Night</h3>
+            <p class="movie-director">Directed by Rituparno Ghosh</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+            </div>
+            <p>Bet the homies didn’t know this existed!</p>
+            <p>This was so ass I love it! The ending was classic man in banyaan behavior (giving Rupa Baniyan ad)</p>
+            <p>Anyways shoutout to this Hansa and Oompa Loompa fuckfest I didn’t know I needed</p>
+          </div>
+        </div>
+
+        <!-- Movie 9 -->
+        <div class="movie-card" data-category="drama">
+          <div class="movie-poster">
+            <img src="assets/images/movies/paddington2.png" alt="Paddington 2 movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2017</span>
+            <h3>Paddington 2</h3>
+            <p class="movie-director">Directed by Paul King</p>
             <div class="movie-rating">
               <span class="star filled">★</span>
               <span class="star filled">★</span>
@@ -291,10 +350,241 @@
               <span class="star filled">★</span>
               <span class="star filled">★</span>
             </div>
-            <p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
-            <a href="movie-detail.html" class="read-more">Read Review</a>
+            <p>Hugh Grant is channelling Mr. A from Dhoom 2</p>
+            <p>The end credits are basically the inspiration for Sing Sing</p>
           </div>
         </div>
+        
+        <!-- Movie 10 -->
+        <div class="movie-card" data-category="drama">
+          <div class="movie-poster">
+            <img src="assets/images/movies/chungking_express.png" alt="Chungking Express movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">1994</span>
+            <h3>Chungking Express</h3>
+            <p class="movie-director">Directed by Wong Kar-wai</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p>She was right about California</p>
+            <p>This movie is so me if I listened to radiohead</p>
+          </div>
+        </div>
+
+         <!-- Movie 11 -->
+         <div class="movie-card" data-category="romedy">
+          <div class="movie-poster">
+            <img src="assets/images/movies/ramaiya.png" alt="Ramaiya Vastavaiya movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2013</span>
+            <h3>Ramaiya Vastavaiya</h3>
+            <p class="movie-director">Directed by Prabhu Deva</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+            </div>
+            <p>WHO LET THE DOGS OUT 😝😝😝</p>
+            <p>Ram could probably put humpty together again bffr</p>
+          </div>
+        </div>
+        
+        <!-- Movie 12 -->
+        <div class="movie-card" data-category="horror">
+          <div class="movie-poster">
+            <img src="assets/images/movies/heretic.png" alt="Heretic movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Heretic</h3>
+            <p class="movie-director">Directed by Scott Beck and Bryan Woods</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+            <p>What Paddington 3 should’ve been</p>
+          </div>
+        </div>
+
+        <!-- Movie 13 -->
+        <div class="movie-card" data-category="romance">
+          <div class="movie-poster">
+            <img src="assets/images/movies/aashiqui2.png" alt="Aashiqui 2 movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2013</span>
+            <h3>Aashiqui 2</h3>
+            <p class="movie-director">Directed by Mohit Suri</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p>Oh Bradley cooper you tried reheating these nachos but the microwave broke down.</p> 
+
+            <p>Also need Rahul Jayekar to watch me code at a “beer bar” and recruit me for a job, because LinkedIn is not working out</p>
+              
+            <p>You know something is wrong with you when the character you relate to the most is the random bald guy (who also played the Ishaan Avasti’s English teacher) at the bar who was throwing shade and talking shit</p>
+          </div>
+        </div>
+        
+        <!-- Movie 14 -->
+        <div class="movie-card" data-category="comedy">
+          <div class="movie-poster">
+            <img src="assets/images/movies/bridgetjones.png" alt="Bridget Jones's Diary movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2001</span>
+            <h3>Bridget Jones : The Edge of Reason</h3>
+            <p class="movie-director">Directed by Beeban Kidron</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+            <p>White lotus 3 and orange is the new black wanted these nachos!</p>
+            <p>Thanks Komma for reminding me about these films. Bridget Jones is MOTHER</p>
+            <p>Also Hugh Grant lookalike contest, when? (Yes I’m a middle aged woman)</p>
+          </div>
+        </div>
+
+        <!-- Movie 15 -->
+        <div class="movie-card" data-category="comedy">
+          <div class="movie-poster">
+            <img src="assets/images/movies/bhoolbhulaiya3.png" alt="Bhool Bhulaiyaa 3 movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Bhool Bhulaiyaa 3</h3>
+            <p class="movie-director">Directed by Anees Bazmee</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+            </div>
+            <p>Who stars in a parody of their own film? Not the final baddie giving drag queen realness! Truly Charles DiLaurentis would be proud I guess
+          </div>
+        </div>
+        
+        <!-- Movie 16 -->
+        <div class="movie-card" data-category="comedy">
+          <div class="movie-poster">
+            <img src="assets/images/movies/thelma.png" alt="Thelma movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Thelma</h3>
+            <p class="movie-director">Directed by Josh Magolin</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie 17 -->
+        <div class="movie-card" data-category="drama">
+          <div class="movie-poster">
+            <img src="assets/images/movies/pianist.png" alt="The Pianist movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2002</span>
+            <h3>The Pianist</h3>
+            <p class="movie-director">Directed by Roman Polanski</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p>I don't know why I thought it would be a good idea to watch this to fall asleep to!</p>
+          </div>
+        </div>
+        
+        <!-- Movie 18 -->
+        <div class="movie-card" data-category="romance">
+          <div class="movie-poster">
+            <img src="assets/images/movies/sidelined.png" alt="Sidelined : The QB & Me movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Sidelined : The QB & Me</h3>
+            <p class="movie-director">Directed by Justin Wu</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <p>Oh we are so back!</p>
+            <p>This is god awful, give me 14 of these right now.</p>
+            <p>Noah Beck is soo birds of India in this. Where is his Oscar nomination???</p>
+            <p>“Great now I’m craving fries”</p>
+          </div>
+        </div>
+
+        <!-- Movie 19 -->
+        <div class="movie-card" data-category="horror">
+          <div class="movie-poster">
+            <img src="assets/images/movies/cuckoo.png" alt="Cuckoo movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Cuckoo</h3>
+            <p class="movie-director">Directed by Tilman Singer</p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie 20 -->
+        <div class="movie-card" data-category="dystopian">
+          <div class="movie-poster">
+            <img src="assets/images/movies/subservience.png" alt="Subservience movie poster">
+          </div>
+          <div class="movie-content">
+            <span class="movie-year">2024</span>
+            <h3>Subservience</h3>
+            <p class="movie-director">Directed by </p>
+            <div class="movie-rating">
+              <span class="star filled">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+            </div>
+            <p>Muggle propaganda low-key</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -302,7 +592,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
+        <p>&copy; 2023 Wimpy Kid. All rights reserved.</p>
         <div class="social-links">
           <a href="https://github.com/yourusername" target="_blank" rel="noopener">
             <svg class="icon icon-github"><use xlink:href="#github"></use></svg>
@@ -359,7 +649,7 @@
           // Show/hide movies based on filter
           movieCards.forEach(card => {
             if (filter === 'all' || card.getAttribute('data-category') === filter) {
-              card.style.display = 'block';
+              card.style.display = 'flex';
             } else {
               card.style.display = 'none';
             }

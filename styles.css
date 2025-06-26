@@ -481,6 +481,75 @@ section {
   transform: translateY(-5px);
 }
 
+/* Movie specific styles */
+.movie-poster {
+  height: 375px;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder-poster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-light);
+}
+
+.placeholder-poster h3 {
+  margin-bottom: 0.5rem;
+}
+
+.movie-content {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+.movie-year {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.movie-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.movie-director {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.movie-rating {
+  margin-bottom: 0.75rem;
+}
+
+.star {
+  color: #ddd;
+  font-size: 1.25rem;
+}
+
+.star.filled {
+  color: #ffb400;
+}
+
 /* Calendar Page */
 .calendar-page {
   padding: 2rem 0;
